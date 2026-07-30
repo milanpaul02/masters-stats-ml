@@ -33,10 +33,10 @@ def posterior(rho, data, prior):
         #Generate a random variable from the prior distribution
         rho_sample = prior.rvs()
         #Compute the product of the likelihood and the prior for the sampled value of rho
-        likelihood = np.prod(scs.multivariate_normal.pdf(data, mean=[0, 0], cov=[[1, rho_sample], [rho_sample, 1]]))
+        likelihood = np.prod(scs.multivariate_normal.pdf(data, mean=[0, 0], cov=[[1, rho_sample], [rho_sample, 1]], allow_singular=True))
         S += likelihood * prior.pdf(rho_sample)
     I = S / 1000
-    return prior.pdf(rho) * np.prod(scs.multivariate_normal.pdf(data, mean=[0, 0], cov=[[1, rho], [rho, 1]])) / I
+    return prior.pdf(rho) * np.prod(scs.multivariate_normal.pdf(data, mean=[0, 0], cov=[[1, rho], [rho, 1]], allow_singular=True)) / I
 
 #Plotting the posterior distributions for different choices of prior distributions and for data samples of size 1, 5, 10 and 20
 
