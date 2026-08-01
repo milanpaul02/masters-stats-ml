@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 ## Defining the model that we will use to generate the data
 
-#The model is a gaussian vector (X,Y) with mean (0,0) and covariance matrix [[1,0.3],[0.3,1]]
+#The model is a gaussian vector (X, Y) with mean (0,0) and covariance matrix [[1, rho],[rho, 1]]
 
 def generate_data(rho, n_samples):
     mean = [0, 0]
